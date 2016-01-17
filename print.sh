@@ -6,9 +6,19 @@ echo  $nb " pages"
 
 if [ $(($nb%2)) -eq 0 ]
 then 
-echo "Odd"
-else
+
 echo "Even"
+lp -o page-set=odd $1
+read -p "Do ... and press [Enter] to continue"
+lp -o page-set=even -o outputorder=reverse $1
+
+else
+
+echo "Odd"
+lp -o page-set=odd $1
+read -p "Do ... and press [Enter] to continue"
+lp -o page-set=even -o outputorder=reverse $1
+
 fi
 
 
